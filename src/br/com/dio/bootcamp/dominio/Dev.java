@@ -34,6 +34,13 @@ public class Dev {
                 .sum();
     }
 
-    public void showCourses(){}
+    public void showCourses(){
+        for(Activity activity : this.currentActivities){
+            System.out.println(activity.toString());
+        }
+    }
 
+    public Set<Activity> getFinishedActivities() {
+        return finishedActivities;
+    }
 }

@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Mentoring extends Activity {
 
-    private LocalDate mentoringDate;
+    private LocalDate mentoringDate = LocalDate.now().plusDays(1);
 
 
     @Override

@@ -13,9 +13,17 @@ public class Bootcamp {
     private Set<Dev> participants = new HashSet<>();
     private Set<Activity> activities = new LinkedHashSet<>();
 
+    public Bootcamp(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
 
     public void addParticipant(Dev dev){
         this.participants.add(dev);
+    }
+
+    public void setActivities(Set<Activity> activities) {
+        this.activities = activities;
     }
 
     public Set<Activity> getActivities() {
