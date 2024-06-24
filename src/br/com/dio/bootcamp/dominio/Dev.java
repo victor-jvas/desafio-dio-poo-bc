@@ -1,31 +1,37 @@
 package br.com.dio.bootcamp.dominio;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Dev {
 
-    String name;
-    List<Mentoring> mentoring;
-    List<Activity> activities;
+    private String name;
+    private Set<Activity> currentActivities = new LinkedHashSet<>();
+    private Set<Activity> finishedActivities = new LinkedHashSet<>();
 
     public Dev(String name) {
         this.name = name;
-        mentoring = new ArrayList<Mentoring>();
-        activities =  new ArrayList<Activity>();
     }
 
-    public Boolean enterBootcamp(Bootcamp bootcamp){
+    public void enterBootcamp(Bootcamp bootcamp){
+        this.currentActivities.addAll(bootcamp.getActivities());
         bootcamp.addParticipant(this);
-        return true;
     }
 
     public void advance(){
-
+        Optional<Activity> activity = this.currentActivities.stream().findFirst();
+        if(activity.isPresent()){
+            this.currentActivities.remove(activity.get());
+            this.finishedActivities.add(activity.get());
+        }else {
+            System.err.println("Nao foi possivel encontrar o activity");
+        }
     }
 
-    public int calculateTotalXp(){
-        return 0;
+    public double calculateTotalXp(){
+        return this.finishedActivities
+                .stream()
+                .mapToDouble(Activity::calculateXp)
+                .sum();
     }
 
     public void showCourses(){}

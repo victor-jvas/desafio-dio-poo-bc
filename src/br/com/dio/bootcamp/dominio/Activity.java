@@ -1,10 +1,12 @@
 package br.com.dio.bootcamp.dominio;
 
-public class Activity {
+public abstract class Activity {
 
-    String title;
-    String description;
+    static final double DEFAULT_XP = 10d;
+
+    protected String title;
+    protected String description;
 
 
-    public void calculateXp(){}
+    public abstract double calculateXp();
 }

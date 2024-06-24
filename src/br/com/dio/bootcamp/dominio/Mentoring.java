@@ -4,7 +4,20 @@ import java.time.LocalDate;
 
 public class Mentoring extends Activity {
 
-    LocalDate mentoringDate;
+    private LocalDate mentoringDate;
 
 
+    @Override
+    public double calculateXp() {
+        return DEFAULT_XP+20d;
+    }
+
+    @Override
+    public String toString() {
+        return "Mentoring{" +
+                "description='" + description + '\'' +
+                ", title='" + title + '\'' +
+                ", mentoringDate=" + mentoringDate +
+                '}';
+    }
 }

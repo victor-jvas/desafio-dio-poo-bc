@@ -1,28 +1,24 @@
 package br.com.dio.bootcamp.dominio;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Bootcamp {
 
-    LocalDate startDate;
-    LocalDate endDate;
-    String name;
-    String description;
+    private LocalDate startDate = LocalDate.now();
+    private LocalDate endDate = LocalDate.now().plusDays(45);
+    private String name;
+    private String description;
 
-    List<Dev> participants;
+    private Set<Dev> participants = new HashSet<>();
+    private Set<Activity> activities = new LinkedHashSet<>();
 
-    public Bootcamp(LocalDate startDate, LocalDate endDate, String name, String description) {
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.name = name;
-        this.description = description;
-
-        this.participants = new ArrayList<>();
-    }
 
     public void addParticipant(Dev dev){
         this.participants.add(dev);
+    }
+
+    public Set<Activity> getActivities() {
+        return activities;
     }
 }
